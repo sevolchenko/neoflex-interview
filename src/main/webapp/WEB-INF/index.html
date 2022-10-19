@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div>
+    <form th:method="GET" th:action="@{/calculate}" th:object="${vacation}">
+        <p>
+            <label for="startDate">Date of vacation beginning</label>
+            <input th:type="date" th:field="*{startDate}" id="startDate">
+            <span style="color:red" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Start date error</span>
+        </p>
+
+        <p>
+            <label for="endDate">Date of vacation ending</label>
+            <input th:type="date" th:field="*{endDate}" id="endDate">
+            <span style="color:red" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">End date error</span>
+        </p>
+
+        <p>
+            <label for="averageSalary">Average salary</label>
+            <input th:type="number" step="1000" th:field="*{averageSalary}" id="averageSalary">
+            <span style="color:red" th:if="${#fields.hasErrors('averageSalary')}" th:errors="*{averageSalary}">Average salary error</span>
+        </p>
+
+        <p><input type="submit" value="calculate"></p>
+
+    </form>
+</div>
+</body>
+</html>
